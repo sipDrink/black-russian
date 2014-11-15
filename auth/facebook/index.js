@@ -2,7 +2,7 @@
 
 var express   = require('express'),
     passport  = require('passport'),
-    auth      = require('../auth');
+    finishUp  = require('../auth').passTokenToRedirectUrl;
 
 var router = express.Router();
 
@@ -14,6 +14,6 @@ router
   .get('/cb', passport.authenticate('facebook', {
     failureRedirect: '/auth/close',
     session: false
-  }), auth.noop);
+  }), finishUp);
 
 module.exports = router;
