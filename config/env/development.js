@@ -6,6 +6,6 @@ module.exports = {
   },
 
   facebook: {
-    callbackURL: 'http://localhost/' + (process.env.PORT || 8000) + '/auth/facebook/cb'
+    callbackURL: 'http://localhost:' + (process.env.PORT || 8000) + '/auth/facebook/cb'
   }
 };

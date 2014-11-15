@@ -6,6 +6,6 @@ module.exports = {
     uri: process.env.MONGO_URL
   },
   facebook: {
-    callbackURL: 'http://localhost/' + process.env.PORT + '/auth/facebook/cb',
+    callbackURL: 'https://powerful-badlands-7666.herokuapp.com/auth/facebook',
   }
 };
