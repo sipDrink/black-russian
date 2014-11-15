@@ -3,7 +3,7 @@
 var morgan        = require('morgan'),
     bodyParser    = require('body-parser'),
     mOverride     = require('method-override'),
-    errorHandler  = require('errorHandler'),
+    errorHandler  = require('errorhandler'),
     config        = require('./env'),
     passport      = require('passport');
 
