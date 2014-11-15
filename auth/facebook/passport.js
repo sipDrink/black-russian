@@ -14,7 +14,7 @@ exports.setup = function(User, config){
       }
     };
 
-    User.findOrCreateOne({ 'provider.facebook.id': prof.id }, user)
+    User.findOneOrCreateOne({ 'provider.facebook.id': prof.id }, user)
       .then(function(user) {
         done(null, user);
       })
