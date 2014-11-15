@@ -7,7 +7,6 @@ var express = require('express'),
     config = require('./config/env');
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
-
 var app = express();
 
 require('./config/express')(app);

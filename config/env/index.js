@@ -3,7 +3,6 @@
 var _ = require('lodash');
 
 // default config for server
-
 var all = {
   env: process.env.NODE_ENV,
 
@@ -26,9 +25,8 @@ var all = {
   },
 
   facebook: {
-    clientID: FB_APP_ID,
-    clientSecret: FB_APP_SECRET,
-    callbackURL: 'http://localhost/' + all.port + '/auth/facebook/cb',
+    clientID: process.env.FB_APP_ID,
+    clientSecret: process.env.FB_APP_SECRET,
     enableProof: false
   },
 

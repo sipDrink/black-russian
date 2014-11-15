@@ -6,7 +6,20 @@ exports.setup = function(User, config){
 
   var FaceBookStrat = new FaceBook(config.facebook, fbcb);
 
+
   function fbcb(at, rt, prof, done){
-    User.findOne({ 'provider.facebook.id': profile.id })
+    var user = {
+      provider: {
+        facebook: prof.id
+      }
+    };
+
+    User.findOrCreateOne({ 'provider.facebook.id': prof.id }, user)
+      .then(function(user) {
+        done(null, user);
+      })
+      .fail(done);
   }
+
+  passport.use('facebook', FaceBookStrat);
 };
