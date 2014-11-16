@@ -35,8 +35,8 @@ function isAuth(){
     });
 }
 
-function signToken(id) {
-  return  jwt.sign({ _id: id }, config.secrets.jwt, { expiresInMinutes: 60*24*7 /* a week */ });
+function signToken(user) {
+  return  jwt.sign({ user: user }, config.secrets.jwt, { expiresInMinutes: 60*24*7 /* a week */ });
 }
 
 
@@ -54,10 +54,7 @@ function passTokenToRedirectUrl(req, res, next) {
     next(e);
   }
 
-  var token = signToken(req.user._id);
-  var user = req.user;
-  var cookie = { token: token, user: user };
-  res.cookie('__sip', JSON.stringify(cookie));
+  var token = signToken(req.user);
   res.redirect('/auth?token=' + token);
 }
 
