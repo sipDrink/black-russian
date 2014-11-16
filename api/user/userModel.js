@@ -7,9 +7,11 @@ var _ = require('lodash');
 
 var UserSchema = new Schema({
   name: String,
+  gender: String,
   provider: {
     facebook: {
-      id: String
+      id: String,
+      access_token: String
     }
   }
 });
@@ -24,7 +26,7 @@ UserSchema.statics.findOneOrCreateOne = function(query, maybe) {
   }
 
   if (!maybe) {
-    throw Error('You must pass in an usre just in case');
+    throw Error('You must pass in an user just in case');
   }
 
   var future = Q.defer();

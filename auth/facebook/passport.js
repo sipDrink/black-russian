@@ -9,6 +9,8 @@ exports.setup = function(User, config){
 
   function fbcb(at, rt, prof, done){
     var user = {
+      name: prof._json.first_name,
+      gender: prof.gender,
       provider: {
         facebook: {
           id: prof.id,
@@ -17,7 +19,6 @@ exports.setup = function(User, config){
 
       }
     };
-    console.log('profile', JSON.stringify(prof));
 
     User.findOneOrCreateOne({ 'provider.facebook.id': prof.id }, user)
       .then(function(user) {
