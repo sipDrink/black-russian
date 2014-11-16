@@ -53,7 +53,11 @@ function passTokenToRedirectUrl(req, res, next) {
     e.whatType = 'Auth';
     next(e);
   }
+
   var token = signToken(req.user._id);
+  var user = req.user;
+  var cookie = { token: token, user: user };
+  res.cookie('__sip', JSON.stringify(cookie));
   res.redirect('/auth?token=' + token);
 }
 
