@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-
   "engines": {
     "node": "0.10.x"
   },
@@ -26,6 +25,7 @@
     "morgan": "^1.5.0",
     "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
+    "pubnub": "^3.7.0",
     "q": "^1.1.1"
   },
   "devDependencies": {
