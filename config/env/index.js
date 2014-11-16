@@ -12,7 +12,8 @@ var all = {
   secrets: {
     pb: {
       publish_key: process.env.PUBNUB_PUBLISH_KEY || 'demo',
-      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY ||'demo'
+      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY ||'demo',
+      secret_key: process.env.PUBNUB_SECRET_KEY
     },
     jwt: process.env.JWT_SECRET
   },

@@ -8,6 +8,10 @@ var _ = require('lodash');
 var UserSchema = new Schema({
   name: String,
   gender: String,
+  auth_key: {
+    type: String,
+    required: true
+  },
   provider: {
     facebook: {
       id: String,
