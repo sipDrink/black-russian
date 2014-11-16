@@ -8,6 +8,7 @@ exports.setup = function(User, config){
 
 
   function fbcb(at, rt, prof, done){
+    console.log(prof);
     var user = {
       provider: {
         facebook: prof.id
