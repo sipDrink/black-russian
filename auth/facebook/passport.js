@@ -8,12 +8,16 @@ exports.setup = function(User, config){
 
 
   function fbcb(at, rt, prof, done){
-    console.log(prof);
     var user = {
       provider: {
-        facebook: prof.id
+        facebook: {
+          id: prof.id,
+          access_token: at
+        }
+
       }
     };
+    console.log('profile', JSON.stringify(prof));
 
     User.findOneOrCreateOne({ 'provider.facebook.id': prof.id }, user)
       .then(function(user) {

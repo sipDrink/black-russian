@@ -40,7 +40,11 @@ UserSchema.statics.findOneOrCreateOne = function(query, maybe) {
     }
 
     User.create(maybe, function(err, user) {
-      future.resolve(user);
+      if (err) {
+        future.reject(err);
+      } else {
+        future.resolve(user);
+      }
     });
   });
   return future.promise;
