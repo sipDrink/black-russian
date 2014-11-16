@@ -21,16 +21,7 @@ exports.setup = function(User, config){
 
     User.findOneOrCreateOne({ 'provider.facebook.id': prof.id }, user)
       .then(function(user) {
-        PN.grant({
-          channel: 'private-' + user._id,
-          auth_key: user.auth_key,
-          read: true,
-          write: true,
-          ttl: 0,
-          callback: function(m){
-            console.log('grant callback', m);
-          }
-        });
+        require('../../api/user')(PN,user);
         done(null, user);
       })
       .fail(done);
