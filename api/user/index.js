@@ -27,7 +27,7 @@ module.exports = function(PN, user){
   PN.subscribe({
     channel: channel,
     message: function(actions){
-      _.forEach(actions, function(action, args) {
+      _.forEach(actions, function(args, action) {
         userEvents[action](args, PN);
       });
     },
@@ -36,8 +36,8 @@ module.exports = function(PN, user){
     }
   });
 
-  PN.publish({
-    channel: channel,
-    message: { updated: 'yess sir' }
-  });
+  // PN.publish({
+  //   channel: channel,
+  //   message: { updated: 'yess sir' }
+  // });
 };
