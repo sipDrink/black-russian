@@ -8,6 +8,9 @@
 // var router = express.Router();
 // router.get('/me', auth.isAuth(), controller.me);
 
+var userEvents = require('./userEvents');
+var _ = require('lodash');
+
 module.exports = function(PN, user){
   var channel = 'private-'+user._id;
   PN.grant({
@@ -23,11 +26,18 @@ module.exports = function(PN, user){
 
   PN.subscribe({
     channel: channel,
-    message: function(data){
-      console.log('FIRST MESSAGE', data);
+    message: function(actions){
+      _.forEach(actions, function(action, args) {
+        userEvents[action](args);
+      });
     },
     error: function(e){
       console.error(e);
     }
+  });
+
+  PN.publish({
+    channel: channel,
+    message: { updated: 'yess sir' }
   });
 };
