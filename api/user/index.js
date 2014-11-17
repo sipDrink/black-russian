@@ -25,6 +25,9 @@ module.exports = function(PN, user){
     channel: channel,
     message: function(data){
       console.log('FIRST MESSAGE', data);
+    },
+    error: function(e){
+      console.error(e);
     }
   });
 };
