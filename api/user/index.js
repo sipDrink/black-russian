@@ -28,7 +28,7 @@ module.exports = function(PN, user){
     channel: channel,
     message: function(actions){
       _.forEach(actions, function(action, args) {
-        userEvents[action](args);
+        userEvents[action](args, PN);
       });
     },
     error: function(e){
